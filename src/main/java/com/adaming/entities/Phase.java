@@ -18,10 +18,11 @@ public class Phase implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idArticle;
+	private Long idPhase;
 	private String nom;
 	@Temporal (TemporalType.DATE)
 	private Date dateDebut;
+	@Temporal (TemporalType.DATE)
 	private Date dateFin;
 	@ManyToOne
 	private Tache tache;
@@ -32,9 +33,9 @@ public class Phase implements Serializable{
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}
-	public Phase(Long idArticle, String nom, Date dateDebut, Date dateFin, Tache tache) {
+	public Phase(Long idPhase, String nom, Date dateDebut, Date dateFin, Tache tache) {
 		super();
-		this.idArticle = idArticle;
+		this.idPhase = idPhase;
 		this.nom = nom;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
@@ -43,11 +44,11 @@ public class Phase implements Serializable{
 	public Phase() {
 		super();
 	}
-	public Long getIdArticle() {
-		return idArticle;
+	public Long getIdPhase() {
+		return idPhase;
 	}
-	public void setIdArticle(Long idArticle) {
-		this.idArticle = idArticle;
+	public void setIdPhase(Long idPhase) {
+		this.idPhase = idPhase;
 	}
 	public String getNom() {
 		return nom;

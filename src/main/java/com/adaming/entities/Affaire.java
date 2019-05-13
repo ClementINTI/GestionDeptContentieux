@@ -21,9 +21,26 @@ public class Affaire implements Serializable{
 	private String reference;
 	private String titre;
 	private String description;
+	private int status;
 	@OneToMany(mappedBy="affaire")
 	private Set <Tache> listTache = new HashSet<Tache>();
+	@OneToMany(mappedBy="affaire")
+	private Set <Document> listDocument = new HashSet<Document>();
 	
+	
+	
+	public Set<Document> getListDocument() {
+		return listDocument;
+	}
+	public void setListDocument(Set<Document> listDocument) {
+		this.listDocument = listDocument;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public Affaire(String reference, String titre, String description) {
 		super();
 		this.reference = reference;
