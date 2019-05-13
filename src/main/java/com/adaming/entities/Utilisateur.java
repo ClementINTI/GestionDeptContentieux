@@ -29,6 +29,11 @@ public class Utilisateur implements Serializable{
 inverseJoinColumns=@JoinColumn(name="idTache", referencedColumnName="idTache"))
 private Set <Tache> listTache = new HashSet<Tache>();
 	
+	@ManyToMany
+	@JoinTable(name="profil",joinColumns=
+	  @JoinColumn(name="idUtilisateur", referencedColumnName="idUtilisateur"),
+	  inverseJoinColumns=@JoinColumn(name="idRole", referencedColumnName="idRole"))
+	  private Set <Role> listRole = new HashSet<Role>();
 	
 	public Utilisateur(Long idUtilisateur, String email, String nom, String prenom) {
 		super();
@@ -38,17 +43,19 @@ private Set <Tache> listTache = new HashSet<Tache>();
 		this.prenom = prenom;
 	}
 
+
+	
+	public Utilisateur() {
+		super();
+	}
+	
 	public Utilisateur(String email, String nom, String prenom) {
 		super();
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
-	
-	public Utilisateur() {
-		super();
-	}
-	
+
 	public Utilisateur(Long idUtilisateur, String email, String nom, String prenom, Set<Tache> listTache) {
 		super();
 		this.idUtilisateur = idUtilisateur;
@@ -56,6 +63,15 @@ private Set <Tache> listTache = new HashSet<Tache>();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.listTache = listTache;
+		
+	}
+	public Utilisateur(String email, String nom, String prenom, Set<Tache> listTache, Set<Role> listRole) {
+		super();
+		this.email = email;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.listTache = listTache;
+		this.listRole = listRole;
 	}
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
@@ -86,6 +102,20 @@ private Set <Tache> listTache = new HashSet<Tache>();
 	}
 	public void setListTache(Set<Tache> listTache) {
 		this.listTache = listTache;
+	}
+
+	public Set<Role> getListRole() {
+		return listRole;
+	}
+
+	public void setListRole(Set<Role> listRole) {
+		this.listRole = listRole;
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", email=" + email + ", nom=" + nom + ", prenom="
+				+ prenom + ", listTache=" + listTache + ", listRole=" + listRole + "]";
 	}
 	
 }
